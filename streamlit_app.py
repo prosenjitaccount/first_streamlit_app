@@ -18,23 +18,19 @@ def get_fruitvice_data(this_first_choice):
     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
     return streamlit.dataframe(fruityvice_normalized) 
 # New section to show Fruityvice API response
-streamlit.header("Fruityvice Fruit Advice!")
+streamlit.header("Fruityvice Fruit Advice!") 
 
-    back_from_function = get_fruitvice_data(fruit_choice)
-    streamlit.dataframe(back_from_function) 
-    
-streamlit.stop()
 try: 
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
     streamlit.error("Please select a fruit to get the information.")
   else: 
     back_from_function = get_fruitvice_data(fruit_choice)
-    streamlit.dataframe(back_from_function) 
+    # streamlit.dataframe(back_from_function) 
 except URLError as e:
   streamlit.error()
 
-
+streamlit.stop()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
