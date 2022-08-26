@@ -20,6 +20,9 @@ def get_fruitvice_data(this_first_choice):
 # New section to show Fruityvice API response
 streamlit.header("Fruityvice Fruit Advice!")
 
+    back_from_function = get_fruitvice_data(fruit_choice)
+    streamlit.dataframe(back_from_function) 
+    
 streamlit.stop()
 try: 
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
